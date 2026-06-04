@@ -1,0 +1,303 @@
+﻿Waiting for an action server to become available...
+Sending goal:
+     pose:
+  header:
+    stamp:
+      sec: 0
+      nanosec: 0
+    frame_id: map
+  pose:
+    position:
+      x: -1.0
+      y: -0.5
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      w: 1.0
+behavior_tree: ''
+
+Goal accepted with ID: 08005b7e741e4b309b7ff1dc2da28e0d
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.0
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.0
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.9779101014137268
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.9779101014137268
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.9779101014137268
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.9779101014137268
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+      w: 0.9999877857044124
+navigation_time:
+  sec: 0
+  nanosec: 0
+estimated_time_remaining:
+  sec: 0
+  nanosec: 0
+number_of_recoveries: 0
+distance_remaining: 0.9779101014137268
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 27
+      nanosec: 800000000
+    frame_id: map
+  pose:
+    position:
+      x: -1.9696312303643844
+      y: -0.4823593109545902
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.004942513731529557
+
+[truncated: original action feedback log had 68090 lines; full motion evidence is preserved in nav2_goal_bag/ and bag_info.txt]
+
+distance_remaining: 0.8457103967666626
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 29
+      nanosec: 0
+    frame_id: map
+  pose:
+    position:
+      x: -1.8323414012014934
+      y: -0.4880576684296109
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.033330268525442616
+      w: 0.999444392250025
+navigation_time:
+  sec: 1
+  nanosec: 200000000
+estimated_time_remaining:
+  sec: 3
+  nanosec: 296101973
+number_of_recoveries: 0
+distance_remaining: 0.8457103967666626
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 29
+      nanosec: 0
+    frame_id: map
+  pose:
+    position:
+      x: -1.8323414012014934
+      y: -0.4880576684296109
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.033330268525442616
+      w: 0.999444392250025
+navigation_time:
+  sec: 1
+  nanosec: 200000000
+estimated_time_remaining:
+  sec: 3
+  nanosec: 296101973
+number_of_recoveries: 0
+distance_remaining: 0.8457103967666626
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 29
+      nanosec: 0
+    frame_id: map
+  pose:
+    position:
+      x: -1.8323414012014934
+      y: -0.4880576684296109
+      z: 0.01
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: -0.033330268525442616
+      w: 0.999444392250025
+navigation_time:
+  sec: 1
+  nanosec: 200000000
+estimated_time_remaining:
+  sec: 3
+  nanosec: 296101973
+number_of_recoveries: 0
+distance_remaining: 0.8457103967666626
+

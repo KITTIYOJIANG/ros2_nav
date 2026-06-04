@@ -1,0 +1,18 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1780545422.424590787] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1780545422.449187735] [rosbag2_storage]: Opened database '/home/zexu/ros2-nav2-turtlebot3/demo/nav2_official_tb3_20260604_115048/nav2_goal_bag/nav2_goal_bag_0.db3' for READ_WRITE.
+[INFO] [1780545422.458061228] [rosbag2_recorder]: Listening for topics...
+[INFO] [1780545422.458102875] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1780545422.460170643] [rosbag2_recorder]: Recording...
+[INFO] [1780545422.573096888] [rosbag2_recorder]: Subscribed to topic '/map'
+[INFO] [1780545422.575028710] [rosbag2_recorder]: Subscribed to topic '/plan'
+[INFO] [1780545423.596537314] [rosbag2_recorder]: Subscribed to topic '/odom'
+[INFO] [1780545423.599547615] [rosbag2_recorder]: Subscribed to topic '/scan'
+[INFO] [1780545423.602035153] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1780545424.620682032] [rosbag2_recorder]: Subscribed to topic '/cmd_vel'
+[INFO] [1780545424.624294743] [rosbag2_recorder]: Subscribed to topic '/cmd_vel_nav'
+[INFO] [1780545424.628044289] [rosbag2_recorder]: Subscribed to topic '/local_plan'
+[INFO] [1780545424.732459253] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1780545424.839710778] [rosbag2_recorder]: Subscribed to topic '/amcl_pose'
+[INFO] [1780545444.079110765] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1780545444.083800223] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1780545444.084043738] [rosbag2_recorder]: Recording stopped

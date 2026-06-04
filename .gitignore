@@ -1,0 +1,5 @@
+*.pid
+*.out
+*.err
+rviz_window_screenshot.png
+

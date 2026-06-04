@@ -1,0 +1,19 @@
+
+Files:             nav2_goal_bag_0.db3
+Bag size:          742.3 KiB
+Storage id:        sqlite3
+Duration:          29.397137354s
+Start:             Jun  4 2026 11:57:02.587872411 (1780545422.587872411)
+End:               Jun  4 2026 11:57:31.985009765 (1780545451.985009765)
+Messages:          1169
+Topic information: Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 1 | Serialization Format: cdr
+                   Topic: /cmd_vel_nav | Type: geometry_msgs/msg/Twist | Count: 364 | Serialization Format: cdr
+                   Topic: /cmd_vel | Type: geometry_msgs/msg/Twist | Count: 364 | Serialization Format: cdr
+                   Topic: /local_plan | Type: nav_msgs/msg/Path | Count: 364 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 39 | Serialization Format: cdr
+                   Topic: /scan | Type: sensor_msgs/msg/LaserScan | Count: 6 | Serialization Format: cdr
+                   Topic: /odom | Type: nav_msgs/msg/Odometry | Count: 22 | Serialization Format: cdr
+                   Topic: /plan | Type: nav_msgs/msg/Path | Count: 7 | Serialization Format: cdr
+                   Topic: /amcl_pose | Type: geometry_msgs/msg/PoseWithCovarianceStamped | Count: 1 | Serialization Format: cdr
+                   Topic: /map | Type: nav_msgs/msg/OccupancyGrid | Count: 1 | Serialization Format: cdr
+

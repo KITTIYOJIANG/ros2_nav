@@ -1,0 +1,25 @@
+
+xwininfo: Window id: 0x390 (the root window) (has no name)
+
+  Root window id: 0x390 (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     8 children:
+     0x20003c (has no name): ()  1621x1029+81+49  +81+49
+        1 child:
+        0x400014 "/opt/ros/humble/share/nav2_bringup/rviz/nav2_default_view.rviz* - RViz": ("rviz2" "rviz2")  1545x932+38+59  +119+108
+           1 child:
+           0x400011 "rviz2": ("rviz2" "rviz2")  1127x828+393+68  +512+176
+              1 child:
+              0xe00004 (has no name): ()  1127x828+0+0  +512+176
+     0x800001 (has no name): ()  1x1+0+0  +0+0
+        1 child:
+        0xc00002 (has no name): ()  1x1+0+0  +0+0
+     0xa00001 (has no name): ()  1x1+0+0  +0+0
+        1 child:
+        0xe00002 (has no name): ()  1x1+0+0  +0+0
+     0x400008 "rviz2": ()  1x1+0+0  +0+0
+     0x400004 "Qt Selection Owner for rviz2": ()  3x3+0+0  +0+0
+     0x200027 "Weston WM": ()  10x10+0+0  +0+0
+     0x200002 (has no name): ()  8192x8192+0+0  +0+0
+     0x200001 (has no name): ()  10x10+0+0  +0+0
+

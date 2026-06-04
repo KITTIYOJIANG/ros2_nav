@@ -1,0 +1,22 @@
+digraph TF {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.55"];
+  node [shape=ellipse, style="filled", fillcolor="#f7fafc", color="#263645", fontname="DejaVu Sans", fontsize=18];
+  edge [color="#263645", penwidth=2, fontname="DejaVu Sans", fontsize=13];
+  map [label="map"];
+  odom [label="odom"];
+  base_footprint [label="base_footprint"];
+  base_link [label="base_link"];
+  base_scan [label="base_scan"];
+  imu_link [label="imu_link"];
+  camera_link [label="camera_link"];
+  wheel_left_link [label="wheel_left_link"];
+  wheel_right_link [label="wheel_right_link"];
+  map -> odom [label="AMCL /tf"];
+  odom -> base_footprint [label="fake_turtlebot_sim /tf"];
+  base_footprint -> base_link [label="robot_state_publisher /tf_static"];
+  base_link -> base_scan [label="laser frame"];
+  base_link -> imu_link;
+  base_link -> camera_link;
+  base_link -> wheel_left_link;
+  base_link -> wheel_right_link;
+}
