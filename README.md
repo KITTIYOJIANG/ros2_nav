@@ -1,4 +1,4 @@
-# ROS2 Nav2 TurtleBot3 Mobile Robot Navigation MVP
+# ROS2 Nav2 TurtleBot3 Navigation Demo
 
 ![ROS2 Humble](https://img.shields.io/badge/ROS2-Humble-blue)
 ![Gazebo](https://img.shields.io/badge/Gazebo-Classic-orange)
@@ -7,186 +7,188 @@
 ![SLAM](https://img.shields.io/badge/SLAM-Toolbox-purple)
 ![Navigation](https://img.shields.io/badge/Navigation-Autonomous-red)
 
-**ROS2 Humble | Gazebo Classic | Nav2 | TurtleBot3 | SLAM | Autonomous Navigation**
+<p align="center">
+  <img src="docs/images/readme_banner.png" alt="ROS2 Nav2 TurtleBot3 demo evidence banner" width="100%">
+</p>
 
-## Verified Run Evidence
+This repository contains a ROS2 Humble + Nav2 TurtleBot3 navigation demo with local run evidence captured in WSL Ubuntu 22.04. The verification artifacts cover nodes, topics, TF, map output, navigation goal execution, planner output, velocity commands, and a recorded ROS bag.
 
-The completed local verification artifacts are in:
+## Demo Evidence
+
+Final evidence directory:
 
 `demo/nav2_official_tb3_20260604_115048/`
 
-Start with `SUBMISSION_SUMMARY.md` in this project root, or open
-`demo/nav2_official_tb3_20260604_115048/nav2_runtime_evidence.png` for a compact visual summary.
+Start with [SUBMISSION_SUMMARY.md](./SUBMISSION_SUMMARY.md) for the task-to-evidence mapping.
+
+<p align="center">
+  <img src="demo/nav2_official_tb3_20260604_115048/nav2_runtime_evidence.png" alt="Nav2 runtime evidence summary" width="100%">
+</p>
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="demo/nav2_official_tb3_20260604_115048/map_turtlebot3_world.png" alt="Saved TurtleBot3 world occupancy map" width="100%">
+    </td>
+    <td width="50%">
+      <img src="demo/nav2_official_tb3_20260604_115048/runtime_tf_tree.png" alt="Runtime TF tree from map to base links" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Map evidence</b><br>Saved occupancy grid used by Nav2.</td>
+    <td align="center"><b>Runtime TF evidence</b><br><code>map -> odom -> base_footprint -> base_link</code>.</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <img src="demo/nav2_official_tb3_20260604_115048/tf_tree.png" alt="Full robot state publisher TF tree" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><b>Robot frame tree</b><br>Full TurtleBot3 frame structure from <code>base_link</code> to sensors and wheels.</td>
+  </tr>
+</table>
+
+## Verified Results
+
+| Check | Evidence |
+|---|---|
+| ROS2 environment | ROS2 Humble on WSL Ubuntu 22.04 |
+| Nav2 lifecycle | `map_server`, `amcl`, `controller_server`, `planner_server`, `bt_navigator`, and related lifecycle nodes reached `active [3]` |
+| Navigation action | `/navigate_to_pose` goal accepted |
+| Recorded bag | 1169 messages over about 29.4 seconds |
+| Nodes / topics | 26 nodes and 62 topics listed |
+| Map | `map_turtlebot3_world.yaml/.pgm/.png`, resolution `0.05 m/cell` |
+| TF | Runtime and static TF captured as text plus PNG/PDF diagrams |
+| Motion output | `/plan`, `/local_plan`, `/cmd_vel`, and `/cmd_vel_nav` captured |
 
 ## Project Overview
 
-This project implements a complete mobile robot navigation pipeline using ROS2 Humble, Gazebo Classic, and the Nav2 framework on a TurtleBot3 Burger model. The system performs simultaneous localization and mapping (SLAM) to build an occupancy grid map, then uses that map with AMCL (Adaptive Monte Carlo Localization) for autonomous navigation. This MVP demonstrates the full perception-planning-control loop required for real-world mobile robotics applications and serves as an educational sandbox for experimenting with path planning, obstacle avoidance, and localization algorithms.
+This project demonstrates a mobile robot navigation pipeline using ROS2 Humble, Gazebo Classic, TurtleBot3, and Nav2. The stack covers the core perception-planning-control loop: map loading, AMCL localization, global planning, local control, TF transforms, laser scan input, odometry, and velocity command output.
+
+The local WSL run exposed a Gazebo factory spawn-service issue, so the final verification used the official Nav2 launch while a small fake TurtleBot3 simulator supplied `/odom`, `/scan`, and `odom -> base_footprint` TF. This allowed the Nav2 lifecycle nodes to activate and publish planning and velocity outputs for acceptance evidence.
 
 ## Architecture
 
-```
+```text
 +-------------+    +-----------+    +------+    +-----+    +------+    +-----------+    +---------+
-|             |    |           |    |      |    |     |    |      |    |           |    |         |
-| Gazebo Sim  |--->|  Sensors  |--->| SLAM |--->| Map |--->| AMCL |--->|   Nav2    |--->| cmd_vel |
-|             |    |           |    |      |    |     |    |      |    |           |    |         |
+| Gazebo Sim  | -> |  Sensors  | -> | SLAM | -> | Map | -> | AMCL | -> |   Nav2    | -> | cmd_vel |
 +-------------+    +-----------+    +------+    +-----+    +------+    +-----------+    +---------+
-      |                 |                                                         |
-      |                 |                                                         |
-      v                 v                                                         v
-+-------------+    +-----------+                                          +---------------+
-|  World/Env  |    |  /scan    |                                          |  /cmd_vel     |
-|  (ground    |    |  /odom    |                                          |  Twist msgs   |
-|   truth)    |    |  /imu     |                                          |  to motors    |
-+-------------+    +-----------+                                          +---------------+
+       |                |                                                   |
+       v                v                                                   v
++-------------+    +-----------+                                     +---------------+
+|  World/Env  |    | /scan     |                                     | /cmd_vel      |
+|  Ground     |    | /odom     |                                     | Twist output  |
+|  Truth      |    | /tf       |                                     +---------------+
++-------------+    +-----------+
 ```
 
 ## Project Structure
 
-```
-ros2-nav2-turtlebot3/
-├── config/
-│   ├── nav2_params.yaml          # Nav2 planner/controller/behavior parameters
-│   ├── mapper_params_online_async.yaml  # SLAM Toolbox config
-│   └── turtlebot3_burger.yaml    # TurtleBot3 model config
-├── launch/
-│   ├── gazebo_world.launch.py    # Launches Gazebo + spawns TurtleBot3
-│   ├── slam.launch.py            # Launches SLAM Toolbox + RViz
-│   ├── navigation.launch.py      # Launches Nav2 stack with map
-│   └── full_pipeline.launch.py   # All-in-one launch file
-├── maps/
-│   ├── my_map.pgm                # Saved occupancy grid image
-│   └── my_map.yaml               # Map metadata (resolution, origin)
-├── worlds/
-│   └── maze_world.world          # Custom Gazebo world
-├── rviz/
-│   └── nav2_view.rviz            # RViz configuration
-├── docs/
-│   ├── FAQ.md                    # Frequently Asked Questions
-│   └── images/                   # Screenshots and diagrams
-├── README.md
-└── LICENSE
+```text
+ros2_nav/
+|-- config/
+|   |-- nav2_params.yaml
+|   |-- mapper_params_online_async.yaml
+|   `-- turtlebot3_burger.yaml
+|-- launch/
+|   |-- gazebo_world.launch.py
+|   |-- slam.launch.py
+|   |-- navigation.launch.py
+|   `-- full_pipeline.launch.py
+|-- maps/
+|   |-- my_map.pgm
+|   `-- my_map.yaml
+|-- worlds/
+|   `-- maze_world.world
+|-- rviz/
+|   `-- nav2_view.rviz
+|-- src/
+|   `-- fake_turtlebot_sim.py
+|-- demo/
+|   `-- nav2_official_tb3_20260604_115048/
+|-- docs/
+|   |-- images/
+|   |-- FAQ.md
+|   |-- technical_report.md
+|   `-- urdf_analysis.md
+|-- SUBMISSION_SUMMARY.md
+`-- README.md
 ```
 
 ## Key Features
 
-- **SLAM**: Real-time mapping using `slam_toolbox` with online asynchronous mode
-- **Localization**: AMCL particle filter for robust pose estimation on a known map
-- **Path Planning**: Global planner (Smac Hybrid-A*) + local controller (Regulated Pure Pursuit)
-- **Obstacle Avoidance**: Dynamic obstacle detection via LiDAR with costmap layers
-- **RViz Visualization**: Live map, pose, path, and sensor data display
-- **Custom Worlds**: Pre-configured maze environment for navigation testing
-- **Modular Launch Files**: Run SLAM and navigation independently or as a full pipeline
+- SLAM-ready configuration using `slam_toolbox`
+- Nav2 map server, AMCL, planner, controller, behavior, and BT navigator configuration
+- TurtleBot3 Burger model and RViz visualization setup
+- Custom world and modular launch files for simulation, SLAM, and navigation
+- Local verification artifacts for nodes, topics, TF, map, goals, paths, and command velocity
 
 ## Quick Start
 
 ### Prerequisites
 
-- Ubuntu 22.04 (Jammy)
-- ROS2 Humble ([installation guide](https://docs.ros.org/en/humble/Installation.html))
-- Gazebo Classic (comes with `ros-humble-ros-gz` or install separately)
+- Ubuntu 22.04
+- ROS2 Humble
+- Gazebo Classic
 - TurtleBot3 packages
+- Nav2 and SLAM Toolbox
 
-### 1. Install Dependencies
+### Install Dependencies
 
 ```bash
-# Install ROS2 Humble (if not already installed)
-# Follow: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
-
-# Install TurtleBot3 packages
 sudo apt update
 sudo apt install ros-humble-turtlebot3-bringup \
                  ros-humble-turtlebot3-description \
                  ros-humble-turtlebot3-gazebo \
-                 ros-humble-turtlebot3-teleop
-
-# Install Nav2 and SLAM Toolbox
-sudo apt install ros-humble-navigation2 \
+                 ros-humble-turtlebot3-teleop \
+                 ros-humble-navigation2 \
                  ros-humble-nav2-bringup \
                  ros-humble-slam-toolbox
 
-# Source ROS2
 source /opt/ros/humble/setup.bash
+export TURTLEBOT3_MODEL=burger
 ```
 
-### 2. Launch Gazebo + Spawn TurtleBot3
+### Launch Simulation
 
 ```bash
-export TURTLEBOT3_MODEL=burger
-
-# Launch empty world with TurtleBot3
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
-
-# OR launch a custom maze world
-ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
 ```
 
-### 3. Run SLAM (Mapping)
-
-Open a **new terminal** and run:
+### Run SLAM
 
 ```bash
-export TURTLEBOT3_MODEL=burger
-
-# Launch SLAM Toolbox
 ros2 launch slam_toolbox online_async_launch.py \
   slam_params_file:=./config/mapper_params_online_async.yaml
+```
 
-# Drive the robot around to build the map
+Drive the robot and save the map:
+
+```bash
 ros2 run turtlebot3_teleop teleop_keyboard
+ros2 run nav2_map_server map_saver_cli -f maps/my_map
 ```
 
-### 4. Save the Map
-
-Once satisfied with the map quality:
+### Run Navigation
 
 ```bash
-# In a new terminal, navigate to your maps directory
-cd ros2-nav2-turtlebot3/maps
-
-# Save the map
-ros2 run nav2_map_server map_saver_cli -f my_map
-```
-
-### 5. Run Autonomous Navigation
-
-First, kill the SLAM nodes. Then:
-
-```bash
-export TURTLEBOT3_MODEL=burger
-
-# Launch Nav2 with the saved map
 ros2 launch nav2_bringup bringup_launch.py \
   map:=./maps/my_map.yaml \
   params_file:=./config/nav2_params.yaml \
   use_sim_time:=true
-
-# In a new terminal, launch RViz
-ros2 run rviz2 rviz2 -d ./rviz/nav2_view.rviz
 ```
 
-### 6. Send Navigation Goals
+Open RViz and send a navigation goal with the `Nav2 Goal` tool.
 
-- In RViz, click the **"Nav2 Goal"** button (top toolbar)
-- Click and drag on the map to set a goal pose (position + orientation)
-- The robot will plan a global path and execute it autonomously
+## Evidence Files
 
-## Demo
-
-> **Video Demo:** [Link to demonstration video] (placeholder)
-
-A recorded walkthrough showing SLAM map building and autonomous navigation in the Gazebo maze environment.
-
-## Experiment Results
-
-| Metric | Value |
-|--------|-------|
-| Map Resolution | |
-| SLAM Time | |
-| Path Length (avg) | |
-| Navigation Success Rate | |
-| Localization Error (RMSE) | |
-| Planner Latency (avg) | |
-| Obstacle Avoidance Rate | |
+- `nodes.txt`, `topics.txt`, `actions.txt`
+- `lifecycle_after_initialpose.txt`
+- `runtime_tf_tree.png`, `tf_dynamic_after_goal.txt`, `tf_static_once.txt`
+- `map_turtlebot3_world.yaml/.pgm/.png`, `map_info.txt`
+- `navigate_to_pose_goal.log`, `plan_once_after_goal.txt`, `local_plan_once_after_goal.txt`
+- `cmd_vel_once_after_goal.txt`, `cmd_vel_nav_once_after_goal.txt`
+- `nav2_goal_bag/metadata.yaml`, `nav2_goal_bag/nav2_goal_bag_0.db3`
 
 ## References
 
