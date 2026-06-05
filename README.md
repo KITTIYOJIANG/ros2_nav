@@ -86,29 +86,26 @@ The local WSL run exposed a Gazebo factory spawn-service issue, so the final ver
 
 ```text
 ros2_nav/
-|-- config/
-|   |-- nav2_params.yaml
-|   |-- mapper_params_online_async.yaml
-|   `-- turtlebot3_burger.yaml
-|-- launch/
-|   |-- gazebo_world.launch.py
-|   |-- slam.launch.py
-|   |-- navigation.launch.py
-|   `-- full_pipeline.launch.py
-|-- maps/
-|   |-- my_map.pgm
-|   `-- my_map.yaml
-|-- worlds/
-|   `-- maze_world.world
-|-- rviz/
-|   `-- nav2_view.rviz
 |-- src/
-|   `-- fake_turtlebot_sim.py
+|   `-- turtlebot3_nav2_demo/
+|       |-- nav2_bringup/
+|       |   `-- waypoint_follower.py
+|       |-- scripts/
+|       |   |-- record_nav.sh
+|       |   `-- replay.sh
+|       `-- worlds/
+|           `-- cluttered_office.world
 |-- demo/
 |   `-- nav2_official_tb3_20260604_115048/
+|       |-- nav2_runtime_evidence.png
+|       |-- runtime_tf_tree.png
+|       |-- map_turtlebot3_world.yaml/.pgm/.png
+|       |-- nodes.txt, topics.txt, actions.txt
+|       `-- nav2_goal_bag/
 |-- docs/
 |   |-- images/
 |   |-- FAQ.md
+|   |-- control_algorithm_case_review.md
 |   |-- technical_report.md
 |   `-- urdf_analysis.md
 |-- SUBMISSION_SUMMARY.md
@@ -124,6 +121,8 @@ ros2_nav/
 - Local verification artifacts for nodes, topics, TF, map, goals, paths, and command velocity
 
 ## Quick Start
+
+The committed repository is primarily a runnable-case archive plus evidence pack. The original verification was completed in WSL at `/home/zexu/ros2-nav2-turtlebot3` using the official Nav2 TurtleBot3 launch and the evidence saved under `demo/nav2_official_tb3_20260604_115048/`.
 
 ### Prerequisites
 
@@ -173,8 +172,8 @@ ros2 run nav2_map_server map_saver_cli -f maps/my_map
 
 ```bash
 ros2 launch nav2_bringup bringup_launch.py \
-  map:=./maps/my_map.yaml \
-  params_file:=./config/nav2_params.yaml \
+  map:=/opt/ros/humble/share/nav2_bringup/maps/turtlebot3_world.yaml \
+  params_file:=/opt/ros/humble/share/nav2_bringup/params/nav2_params.yaml \
   use_sim_time:=true
 ```
 
@@ -189,6 +188,10 @@ Open RViz and send a navigation goal with the `Nav2 Goal` tool.
 - `navigate_to_pose_goal.log`, `plan_once_after_goal.txt`, `local_plan_once_after_goal.txt`
 - `cmd_vel_once_after_goal.txt`, `cmd_vel_nav_once_after_goal.txt`
 - `nav2_goal_bag/metadata.yaml`, `nav2_goal_bag/nav2_goal_bag_0.db3`
+
+## Case Review
+
+The Chinese technical review for the ROS2/control-algorithm reflection task is available at [docs/control_algorithm_case_review.md](./docs/control_algorithm_case_review.md). It covers the problem, modeling, tuning process, and final results.
 
 ## References
 
