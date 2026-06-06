@@ -21,6 +21,16 @@ Final evidence directory:
 
 Start with [SUBMISSION_SUMMARY.md](./SUBMISSION_SUMMARY.md) for the task-to-evidence mapping.
 
+## Demo Video
+
+<p align="center">
+  <a href="docs/videos/nav2_demo_recap.mp4">
+    <img src="docs/videos/nav2_demo_recap_preview.png" alt="ROS2 Nav2 demo recap video preview" width="100%">
+  </a>
+</p>
+
+The quick recap video is available at [docs/videos/nav2_demo_recap.mp4](./docs/videos/nav2_demo_recap.mp4). It is a 34-second evidence walkthrough generated from the saved run artifacts.
+
 <p align="center">
   <img src="demo/nav2_official_tb3_20260604_115048/nav2_runtime_evidence.png" alt="Nav2 runtime evidence summary" width="100%">
 </p>
