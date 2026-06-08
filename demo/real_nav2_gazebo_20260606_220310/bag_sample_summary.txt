@@ -1,0 +1,27 @@
+Real Gazebo/Nav2 bag sample summary
+
+Topic counts:
+- /amcl_pose: 19
+- /clock: 649
+- /cmd_vel: 331
+- /map: 1
+- /odom: 1906
+- /particle_cloud: 18
+- /plan: 15
+- /scan: 324
+- /tf: 3489
+- /tf_static: 1
+
+odom_start: t=1780754884.757, x=-1.9901, y=-0.5000, yaw=0.37 deg
+odom_end: t=1780754954.291, x=0.3664, y=0.4741, yaw=-16.56 deg
+cmd_vel_first: t=1780754886.297, linear.x=0.1642, angular.z=0.6400
+plan_first: t=1780754888.151, poses=135
+  pose[0]: x=-1.950, y=-0.500
+  pose[1]: x=-1.945, y=-0.466
+  pose[2]: x=-1.945, y=-0.441
+  pose[3]: x=-1.946, y=-0.416
+  pose[4]: x=-1.947, y=-0.391
+  pose[5]: x=-1.948, y=-0.366
+  pose[6]: x=-1.949, y=-0.341
+  pose[7]: x=-1.950, y=-0.316
+scan_first: t=1780754884.753, finite_ranges=325, min=0.497, max=3.371

@@ -1,0 +1,160 @@
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 292
+      nanosec: 730000000
+    frame_id: map
+  pose:
+    position:
+      x: 0.3403230075502592
+      y: 0.47666342956203506
+      z: 0.011618698883753963
+    orientation:
+      x: 0.0005558427829795851
+      y: -3.5420931283010035e-05
+      z: -0.1090955727232071
+      w: 0.994031109068702
+navigation_time:
+  sec: 12
+  nanosec: 600000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 659364126
+number_of_recoveries: 0
+distance_remaining: 0.29571089148521423
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 292
+      nanosec: 730000000
+    frame_id: map
+  pose:
+    position:
+      x: 0.3403230075502592
+      y: 0.47666342956203506
+      z: 0.011618698883753963
+    orientation:
+      x: 0.0005558427829795851
+      y: -3.5420931283010035e-05
+      z: -0.1090955727232071
+      w: 0.994031109068702
+navigation_time:
+  sec: 12
+  nanosec: 600000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 659364126
+number_of_recoveries: 0
+distance_remaining: 0.29571089148521423
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 292
+      nanosec: 730000000
+    frame_id: map
+  pose:
+    position:
+      x: 0.3403230075502592
+      y: 0.47666342956203506
+      z: 0.011618698883753963
+    orientation:
+      x: 0.0005558427829795851
+      y: -3.5420931283010035e-05
+      z: -0.1090955727232071
+      w: 0.994031109068702
+navigation_time:
+  sec: 12
+  nanosec: 600000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 659364126
+number_of_recoveries: 0
+distance_remaining: 0.29571089148521423
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 292
+      nanosec: 730000000
+    frame_id: map
+  pose:
+    position:
+      x: 0.3403230075502592
+      y: 0.47666342956203506
+      z: 0.011618698883753963
+    orientation:
+      x: 0.0005558427829795851
+      y: -3.5420931283010035e-05
+      z: -0.1090955727232071
+      w: 0.994031109068702
+navigation_time:
+  sec: 12
+  nanosec: 600000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 659364126
+number_of_recoveries: 0
+distance_remaining: 0.29571089148521423
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 292
+      nanosec: 764000000
+    frame_id: map
+  pose:
+    position:
+      x: 0.34535532338471614
+      y: 0.4755335441746178
+      z: 0.0116548960540531
+    orientation:
+      x: 0.0005747806021227913
+      y: -2.5850141458883847e-05
+      z: -0.11175597605841342
+      w: 0.993735513491523
+navigation_time:
+  sec: 12
+  nanosec: 600000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 703123327
+number_of_recoveries: 0
+distance_remaining: 0.29571089148521423
+
+Feedback:
+    current_pose:
+  header:
+    stamp:
+      sec: 292
+      nanosec: 764000000
+    frame_id: map
+  pose:
+    position:
+      x: 0.34535532338471614
+      y: 0.4755335441746178
+      z: 0.0116548960540531
+    orientation:
+      x: 0.0005747806021227913
+      y: -2.5850141458883847e-05
+      z: -0.11175597605841342
+      w: 0.993735513491523
+navigation_time:
+  sec: 12
+  nanosec: 600000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 703123327
+number_of_recoveries: 0
+distance_remaining: 0.29571089148521423
+
+Result:
+    result: {}
+
+Goal finished with status: SUCCEEDED

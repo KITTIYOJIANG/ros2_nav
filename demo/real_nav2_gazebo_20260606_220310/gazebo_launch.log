@@ -1,0 +1,38 @@
+[INFO] [launch]: All log files can be found below /home/zexu/.ros/log/2026-06-06-22-03-12-853125-DESKTOP-2JL5KMQ-29075
+[INFO] [launch]: Default logging verbosity is set to INFO
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+[INFO] [gzserver-1]: process started with pid [29141]
+[INFO] [gzclient-2]: process started with pid [29143]
+[INFO] [robot_state_publisher-3]: process started with pid [29145]
+[INFO] [spawn_entity.py-4]: process started with pid [29147]
+[robot_state_publisher-3] [INFO] [1780754594.156146992] [robot_state_publisher]: got segment base_footprint
+[robot_state_publisher-3] [INFO] [1780754594.156264987] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-3] [INFO] [1780754594.156274774] [robot_state_publisher]: got segment base_scan
+[robot_state_publisher-3] [INFO] [1780754594.156280019] [robot_state_publisher]: got segment camera_depth_frame
+[robot_state_publisher-3] [INFO] [1780754594.156285031] [robot_state_publisher]: got segment camera_depth_optical_frame
+[robot_state_publisher-3] [INFO] [1780754594.156290268] [robot_state_publisher]: got segment camera_link
+[robot_state_publisher-3] [INFO] [1780754594.156295290] [robot_state_publisher]: got segment camera_rgb_frame
+[robot_state_publisher-3] [INFO] [1780754594.156300269] [robot_state_publisher]: got segment camera_rgb_optical_frame
+[robot_state_publisher-3] [INFO] [1780754594.156305225] [robot_state_publisher]: got segment caster_back_left_link
+[robot_state_publisher-3] [INFO] [1780754594.156310139] [robot_state_publisher]: got segment caster_back_right_link
+[robot_state_publisher-3] [INFO] [1780754594.156315015] [robot_state_publisher]: got segment imu_link
+[robot_state_publisher-3] [INFO] [1780754594.156319943] [robot_state_publisher]: got segment wheel_left_link
+[robot_state_publisher-3] [INFO] [1780754594.156324918] [robot_state_publisher]: got segment wheel_right_link
+[spawn_entity.py-4] [INFO] [1780754594.354689341] [spawn_entity]: Spawn Entity started
+[spawn_entity.py-4] [INFO] [1780754594.355129449] [spawn_entity]: Loading entity XML from file /opt/ros/humble/share/turtlebot3_gazebo/models/turtlebot3_waffle/model.sdf
+[spawn_entity.py-4] [INFO] [1780754594.357429635] [spawn_entity]: Waiting for service /spawn_entity, timeout = 30
+[spawn_entity.py-4] [INFO] [1780754594.357813787] [spawn_entity]: Waiting for service /spawn_entity
+[spawn_entity.py-4] [INFO] [1780754596.870650125] [spawn_entity]: Calling service /spawn_entity
+[gzserver-1] [INFO] [1780754597.173125889] [turtlebot3_imu]: <initial_orientation_as_reference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
+[spawn_entity.py-4] [INFO] [1780754597.278468157] [spawn_entity]: Spawn status: SpawnEntity: Successfully spawned entity [waffle]
+[gzserver-1] [INFO] [1780754597.393385531] [turtlebot3_diff_drive]: Wheel pair 1 separation set to [0.287000m]
+[gzserver-1] [INFO] [1780754597.393476801] [turtlebot3_diff_drive]: Wheel pair 1 diameter set to [0.066000m]
+[gzserver-1] [INFO] [1780754597.394386009] [turtlebot3_diff_drive]: Subscribed to [/cmd_vel]
+[gzserver-1] [INFO] [1780754597.396253264] [turtlebot3_diff_drive]: Advertise odometry on [/odom]
+[gzserver-1] [INFO] [1780754597.398472562] [turtlebot3_diff_drive]: Publishing odom transforms between [odom] and [base_footprint]
+[gzserver-1] [INFO] [1780754597.407048968] [turtlebot3_joint_state]: Going to publish joint [wheel_left_joint]
+[gzserver-1] [INFO] [1780754597.407129457] [turtlebot3_joint_state]: Going to publish joint [wheel_right_joint]
+[INFO] [spawn_entity.py-4]: process has finished cleanly [pid 29147]
+[gzclient-2] gzclient: /usr/include/boost/smart_ptr/shared_ptr.hpp:728: typename boost::detail::sp_member_access<T>::type boost::shared_ptr<T>::operator->() const [with T = gazebo::rendering::Camera; typename boost::detail::sp_member_access<T>::type = gazebo::rendering::Camera*]: Assertion `px != 0' failed.
+[ERROR] [gzclient-2]: process has died [pid 29143, exit code -6, cmd 'gzclient --gui-client-plugin=libgazebo_ros_eol_gui.so'].

@@ -1,0 +1,25 @@
+### /map_server
+active [3]
+rc=0
+### /amcl
+active [3]
+rc=0
+### /controller_server
+rc=124
+### /planner_server
+active [3]
+rc=0
+### /smoother_server
+active [3]
+rc=0
+### /behavior_server
+rc=124
+### /bt_navigator
+active [3]
+rc=0
+### /waypoint_follower
+active [3]
+rc=0
+### /velocity_smoother
+active [3]
+rc=0

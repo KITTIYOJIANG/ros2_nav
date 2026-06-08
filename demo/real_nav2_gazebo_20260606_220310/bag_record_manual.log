@@ -1,0 +1,18 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1780754884.666293853] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1780754884.687472327] [rosbag2_storage]: Opened database '/home/zexu/ros2-nav2-turtlebot3/real_nav2_gazebo_20260606_220310/real_nav2_bag_manual/real_nav2_bag_manual_0.db3' for READ_WRITE.
+[INFO] [1780754884.695492985] [rosbag2_recorder]: Listening for topics...
+[INFO] [1780754884.695786965] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1780754884.706945387] [rosbag2_recorder]: Subscribed to topic '/tf_static'
+[INFO] [1780754884.708970487] [rosbag2_recorder]: Subscribed to topic '/tf'
+[INFO] [1780754884.711636849] [rosbag2_recorder]: Subscribed to topic '/plan'
+[INFO] [1780754884.715778522] [rosbag2_recorder]: Subscribed to topic '/particle_cloud'
+[INFO] [1780754884.719125412] [rosbag2_recorder]: Subscribed to topic '/cmd_vel'
+[INFO] [1780754884.723818819] [rosbag2_recorder]: Subscribed to topic '/map'
+[INFO] [1780754884.729096323] [rosbag2_recorder]: Subscribed to topic '/amcl_pose'
+[INFO] [1780754884.730018779] [rosbag2_recorder]: Recording...
+[INFO] [1780754884.737656610] [rosbag2_recorder]: Subscribed to topic '/clock'
+[INFO] [1780754884.742533012] [rosbag2_recorder]: Subscribed to topic '/odom'
+[INFO] [1780754884.746450693] [rosbag2_recorder]: Subscribed to topic '/scan'
+[INFO] [1780754954.321125903] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1780754954.333189971] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1780754954.333307335] [rosbag2_recorder]: Recording stopped

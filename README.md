@@ -3,7 +3,7 @@
 ![ROS2 Humble](https://img.shields.io/badge/ROS2-Humble-blue)
 ![Gazebo](https://img.shields.io/badge/Gazebo-Classic-orange)
 ![Nav2](https://img.shields.io/badge/Nav2-Stack-green)
-![TurtleBot3](https://img.shields.io/badge/TurtleBot3-Burger-yellow)
+![TurtleBot3](https://img.shields.io/badge/TurtleBot3-Waffle-yellow)
 ![SLAM](https://img.shields.io/badge/SLAM-Toolbox-purple)
 ![Navigation](https://img.shields.io/badge/Navigation-Autonomous-red)
 
@@ -11,73 +11,52 @@
   <img src="docs/images/readme_banner.png" alt="ROS2 Nav2 TurtleBot3 demo evidence banner" width="100%">
 </p>
 
-This repository contains a ROS2 Humble + Nav2 TurtleBot3 navigation demo with local run evidence captured in WSL Ubuntu 22.04. The verification artifacts cover nodes, topics, TF, map output, navigation goal execution, planner output, velocity commands, and a recorded ROS bag.
+This repository contains a ROS2 Humble + Nav2 TurtleBot3 navigation demo with local run evidence captured in WSL Ubuntu 22.04. The final evidence run uses real Gazebo Classic TurtleBot3 odometry and laser scan topics, then drives the robot with Nav2 through `/navigate_to_pose`.
 
 ## Demo Evidence
 
-Final evidence directory:
+Final real Gazebo evidence directory:
 
-`demo/nav2_official_tb3_20260604_115048/`
+`demo/real_nav2_gazebo_20260606_220310/`
 
 Start with [SUBMISSION_SUMMARY.md](./SUBMISSION_SUMMARY.md) for the task-to-evidence mapping.
 
 ## Demo Video
 
 <p align="center">
-  <a href="docs/videos/nav2_robot_motion_replay.mp4">
-    <img src="docs/videos/nav2_robot_motion_replay_preview.png" alt="Nav2 robot motion replay preview" width="100%">
+  <a href="docs/videos/real_gazebo_nav2_run.mp4">
+    <img src="docs/videos/real_gazebo_nav2_run_preview.png" alt="Real Gazebo TurtleBot3 Nav2 run preview" width="100%">
   </a>
 </p>
 
-The motion replay is available at [docs/videos/nav2_robot_motion_replay.mp4](./docs/videos/nav2_robot_motion_replay.mp4). It visualizes the robot moving along the saved Nav2 `/plan` on the recorded map, with `/plan -> /local_plan -> /cmd_vel` shown as the control output chain.
+The real run video is available at [docs/videos/real_gazebo_nav2_run.mp4](./docs/videos/real_gazebo_nav2_run.mp4). It is rendered from the recorded rosbag: blue robot pose comes from Gazebo `/odom`, green points from `/scan`, purple path from Nav2 `/plan`, red trail from the actual driven odometry, and the velocity bars from `/cmd_vel`.
 
-A separate evidence recap video is also available at [docs/videos/nav2_demo_recap.mp4](./docs/videos/nav2_demo_recap.mp4). It is a 34-second walkthrough generated from the saved run artifacts.
+Earlier visual recap videos remain archived at [docs/videos/nav2_robot_motion_replay.mp4](./docs/videos/nav2_robot_motion_replay.mp4) and [docs/videos/nav2_demo_recap.mp4](./docs/videos/nav2_demo_recap.mp4). The final acceptance evidence is the real Gazebo run above.
 
 <p align="center">
-  <img src="demo/nav2_official_tb3_20260604_115048/nav2_runtime_evidence.png" alt="Nav2 runtime evidence summary" width="100%">
+  <img src="docs/videos/real_gazebo_nav2_run_preview.png" alt="Real Gazebo Nav2 runtime evidence summary" width="100%">
 </p>
 
-<table>
-  <tr>
-    <td width="50%">
-      <img src="demo/nav2_official_tb3_20260604_115048/map_turtlebot3_world.png" alt="Saved TurtleBot3 world occupancy map" width="100%">
-    </td>
-    <td width="50%">
-      <img src="demo/nav2_official_tb3_20260604_115048/runtime_tf_tree.png" alt="Runtime TF tree from map to base links" width="100%">
-    </td>
-  </tr>
-  <tr>
-    <td align="center"><b>Map evidence</b><br>Saved occupancy grid used by Nav2.</td>
-    <td align="center"><b>Runtime TF evidence</b><br><code>map -> odom -> base_footprint -> base_link</code>.</td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <img src="demo/nav2_official_tb3_20260604_115048/tf_tree.png" alt="Full robot state publisher TF tree" width="100%">
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><b>Robot frame tree</b><br>Full TurtleBot3 frame structure from <code>base_link</code> to sensors and wheels.</td>
-  </tr>
-</table>
+Primary evidence files are in [demo/real_nav2_gazebo_20260606_220310](./demo/real_nav2_gazebo_20260606_220310/): Gazebo `/odom` and `/scan` samples, AMCL pose, Nav2 action result, rosbag metadata, topic/node/action lists, and the recorded bag database.
 
 ## Verified Results
 
 | Check | Evidence |
 |---|---|
 | ROS2 environment | ROS2 Humble on WSL Ubuntu 22.04 |
-| Nav2 lifecycle | `map_server`, `amcl`, `controller_server`, `planner_server`, `bt_navigator`, and related lifecycle nodes reached `active [3]` |
-| Navigation action | `/navigate_to_pose` goal accepted |
-| Recorded bag | 1169 messages over about 29.4 seconds |
-| Nodes / topics | 26 nodes and 62 topics listed |
-| Map | `map_turtlebot3_world.yaml/.pgm/.png`, resolution `0.05 m/cell` |
-| TF | Runtime and static TF captured as text plus PNG/PDF diagrams |
-| Motion output | `/plan`, `/local_plan`, `/cmd_vel`, and `/cmd_vel_nav` captured |
+| Gazebo sensor source | `turtlebot3_gazebo` published `/odom` and `/scan` before Nav2 goal execution |
+| Navigation action | `/navigate_to_pose` finished with `SUCCEEDED` |
+| Recorded bag | 6753 messages over about 69.6 seconds |
+| Robot motion | `/odom` moved from about `(-1.99, -0.50)` to `(0.37, 0.47)` |
+| Motion output | `/cmd_vel` 331 messages and `/plan` 15 messages in the bag |
+| Sensors / TF | `/scan` 324 messages, `/tf` 3489 messages, `/tf_static` 1 message |
+| Map | `map_turtlebot3_world.yaml/.pgm`, resolution `0.05 m/cell` |
 
 ## Project Overview
 
 This project demonstrates a mobile robot navigation pipeline using ROS2 Humble, Gazebo Classic, TurtleBot3, and Nav2. The stack covers the core perception-planning-control loop: map loading, AMCL localization, global planning, local control, TF transforms, laser scan input, odometry, and velocity command output.
 
-The local WSL run exposed a Gazebo factory spawn-service issue, so the final verification used the official Nav2 launch while a small fake TurtleBot3 simulator supplied `/odom`, `/scan`, and `odom -> base_footprint` TF. This allowed the Nav2 lifecycle nodes to activate and publish planning and velocity outputs for acceptance evidence.
+The final run was staged deliberately: Gazebo launched first and verified real `/odom` plus `/scan`; Nav2 launched second with the TurtleBot3 world map; `/initialpose` initialized AMCL; then `/navigate_to_pose` drove the Gazebo robot to the target.
 
 ## Architecture
 
@@ -104,19 +83,23 @@ ros2_nav/
 |       |   `-- waypoint_follower.py
 |       |-- scripts/
 |       |   |-- record_nav.sh
+|       |   |-- run_real_gazebo_nav2.sh
 |       |   `-- replay.sh
 |       `-- worlds/
 |           `-- cluttered_office.world
 |-- demo/
+|   |-- real_nav2_gazebo_20260606_220310/
+|   |   |-- README.md
+|   |   |-- bag_sample_summary.txt
+|   |   |-- real_nav2_bag_manual_info.txt
+|   |   |-- navigate_to_pose_goal_result_tail.txt
+|   |   `-- real_nav2_bag_manual/
 |   `-- nav2_official_tb3_20260604_115048/
-|       |-- nav2_runtime_evidence.png
-|       |-- runtime_tf_tree.png
-|       |-- map_turtlebot3_world.yaml/.pgm/.png
-|       |-- nodes.txt, topics.txt, actions.txt
-|       `-- nav2_goal_bag/
 |-- docs/
 |   |-- images/
+|   |-- videos/
 |   |-- FAQ.md
+|   |-- real_gazebo_nav2_walkthrough.md
 |   |-- control_algorithm_case_review.md
 |   |-- technical_report.md
 |   `-- urdf_analysis.md
@@ -128,13 +111,13 @@ ros2_nav/
 
 - SLAM-ready configuration using `slam_toolbox`
 - Nav2 map server, AMCL, planner, controller, behavior, and BT navigator configuration
-- TurtleBot3 Burger model and RViz visualization setup
+- TurtleBot3 Gazebo model and RViz visualization setup
 - Custom world and modular launch files for simulation, SLAM, and navigation
 - Local verification artifacts for nodes, topics, TF, map, goals, paths, and command velocity
 
 ## Quick Start
 
-The committed repository is primarily a runnable-case archive plus evidence pack. The original verification was completed in WSL at `/home/zexu/ros2-nav2-turtlebot3` using the official Nav2 TurtleBot3 launch and the evidence saved under `demo/nav2_official_tb3_20260604_115048/`.
+The committed repository is a runnable-case archive plus evidence pack. The final real Gazebo verification was completed in WSL at `/home/zexu/ros2-nav2-turtlebot3` and saved under `demo/real_nav2_gazebo_20260606_220310/`.
 
 ### Prerequisites
 
@@ -157,7 +140,7 @@ sudo apt install ros-humble-turtlebot3-bringup \
                  ros-humble-slam-toolbox
 
 source /opt/ros/humble/setup.bash
-export TURTLEBOT3_MODEL=burger
+export TURTLEBOT3_MODEL=waffle
 ```
 
 ### Launch Simulation
@@ -191,15 +174,23 @@ ros2 launch nav2_bringup bringup_launch.py \
 
 Open RViz and send a navigation goal with the `Nav2 Goal` tool.
 
+### Reproduce The Final Real Run
+
+```bash
+/mnt/f/Work/Portfolio/ros2_nav/src/turtlebot3_nav2_demo/scripts/run_real_gazebo_nav2.sh \
+  /home/zexu/ros2-nav2-turtlebot3/real_nav2_gazebo_repeat
+```
+
+See [docs/real_gazebo_nav2_walkthrough.md](./docs/real_gazebo_nav2_walkthrough.md) for the step-by-step explanation.
+
 ## Evidence Files
 
-- `nodes.txt`, `topics.txt`, `actions.txt`
-- `lifecycle_after_initialpose.txt`
-- `runtime_tf_tree.png`, `tf_dynamic_after_goal.txt`, `tf_static_once.txt`
-- `map_turtlebot3_world.yaml/.pgm/.png`, `map_info.txt`
-- `navigate_to_pose_goal.log`, `plan_once_after_goal.txt`, `local_plan_once_after_goal.txt`
-- `cmd_vel_once_after_goal.txt`, `cmd_vel_nav_once_after_goal.txt`
-- `nav2_goal_bag/metadata.yaml`, `nav2_goal_bag/nav2_goal_bag_0.db3`
+- `demo/real_nav2_gazebo_20260606_220310/README.md`
+- `bag_sample_summary.txt`, `real_nav2_bag_manual_info.txt`
+- `odom_once_gazebo.txt`, `scan_once_gazebo.txt`, `amcl_pose_once_manual.txt`
+- `navigate_to_pose_goal_result_tail.txt`
+- `nodes_after_goal_manual.txt`, `topics_after_goal_manual.txt`, `actions_after_goal_manual.txt`
+- `real_nav2_bag_manual/metadata.yaml`, `real_nav2_bag_manual/real_nav2_bag_manual_0.db3`
 
 ## Case Review
 

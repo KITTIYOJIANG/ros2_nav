@@ -1,0 +1,5 @@
+RUN_DIR=/home/zexu/ros2-nav2-turtlebot3/real_nav2_gazebo_20260606_220310
+GZ_PID=29075
+GAZEBO_READY_AT=4s
+NAV_PID=29491
+NAV_READY_AT=2s

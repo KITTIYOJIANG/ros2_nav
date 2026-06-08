@@ -1,0 +1,18 @@
+
+Files:             real_nav2_bag_manual_0.db3
+Bag size:          4.9 MiB
+Storage id:        sqlite3
+Duration:          69.565931621s
+Start:             Jun  6 2026 22:08:04.736898362 (1780754884.736898362)
+End:               Jun  6 2026 22:09:14.302829983 (1780754954.302829983)
+Messages:          6753
+Topic information: Topic: /scan | Type: sensor_msgs/msg/LaserScan | Count: 324 | Serialization Format: cdr
+                   Topic: /odom | Type: nav_msgs/msg/Odometry | Count: 1906 | Serialization Format: cdr
+                   Topic: /amcl_pose | Type: geometry_msgs/msg/PoseWithCovarianceStamped | Count: 19 | Serialization Format: cdr
+                   Topic: /map | Type: nav_msgs/msg/OccupancyGrid | Count: 1 | Serialization Format: cdr
+                   Topic: /cmd_vel | Type: geometry_msgs/msg/Twist | Count: 331 | Serialization Format: cdr
+                   Topic: /particle_cloud | Type: nav2_msgs/msg/ParticleCloud | Count: 18 | Serialization Format: cdr
+                   Topic: /plan | Type: nav_msgs/msg/Path | Count: 15 | Serialization Format: cdr
+                   Topic: /clock | Type: rosgraph_msgs/msg/Clock | Count: 649 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 3489 | Serialization Format: cdr
+                   Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 1 | Serialization Format: cdr

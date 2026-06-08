@@ -3,4 +3,11 @@
 *.world text eol=lf
 *.yaml text eol=lf
 *.md text eol=lf
+*.txt text eol=lf
+*.log text eol=lf
+.gitattributes text eol=lf
 
+*.db3 binary
+*.mp4 binary
+*.png binary
+*.pgm binary
